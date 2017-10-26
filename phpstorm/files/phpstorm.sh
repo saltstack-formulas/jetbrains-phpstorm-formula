@@ -1,2 +1,2 @@
-export PHPSTORM_HOME={{ phpstorm_home }}
+export PHPSTORM_HOME={{ home }}
 export PATH=${PATH}:${PHPSTORM_HOME}/bin

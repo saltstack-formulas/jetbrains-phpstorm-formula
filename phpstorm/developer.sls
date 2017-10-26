@@ -1,6 +1,6 @@
 {% from "phpstorm/map.jinja" import phpstorm with context %}
 
-{% if phpstorm.prefs.user not in (None, 'undefined_user') %}
+{% if phpstorm.prefs.user not in (None, 'undfined', 'undefined_user') %}
 
   {% if grains.os == 'MacOS' %}
 phpstorm-desktop-shortcut-clean:
@@ -20,15 +20,17 @@ phpstorm-desktop-shortcut-add:
     - context:
       user: {{ phpstorm.prefs.user }}
       homes: {{ phpstorm.homes }}
+      edition: {{ phpstorm.jetbrains.edition }}
   cmd.run:
     - name: /tmp/mac_shortcut.sh {{ phpstorm.jetbrains.edition }}
     - runas: {{ phpstorm.prefs.user }}
     - require:
       - file: phpstorm-desktop-shortcut-add
    {% else %}
+   #Linux
   file.managed:
     - source: salt://phpstorm/files/phpstorm.desktop
-    - name: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/Desktop/phpstorm.desktop
+    - name: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/Desktop/phpstorm{{ phpstorm.jetbrains.edition }}.desktop
     - user: {{ phpstorm.prefs.user }}
     - makedirs: True
       {% if salt['grains.get']('os_family') in ('Suse') %} 
@@ -39,35 +41,35 @@ phpstorm-desktop-shortcut-add:
     - mode: 644
     - force: True
     - template: jinja
-    - onlyif: test -f {{ phpstorm.symhome }}/{{ phpstorm.command }}
+    - onlyif: test -f {{ phpstorm.jetbrains.realcmd }}
     - context:
-      home: {{ phpstorm.symhome }}
+      home: {{ phpstorm.jetbrains.realhome }}
       command: {{ phpstorm.command }}
    {% endif %}
 
 
-  {% if phpstorm.prefs.importurl or phpstorm.prefs.importdir %}
+  {% if phpstorm.prefs.jarurl or phpstorm.prefs.jardir %}
 
 phpstorm-prefs-importfile:
-   {% if phpstorm.prefs.importdir %}
+   {% if phpstorm.prefs.jardir %}
   file.managed:
-    - onlyif: test -f {{ phpstorm.prefs.importdir }}/{{ phpstorm.prefs.myfile }}
-    - name: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.myfile }}
-    - source: {{ phpstorm.prefs.importdir }}/{{ phpstorm.prefs.myfile }}
+    - onlyif: test -f {{ phpstorm.prefs.jardir }}/{{ phpstorm.prefs.jarfile }}
+    - name: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.jarfile }}
+    - source: {{ phpstorm.prefs.jardir }}/{{ phpstorm.prefs.jarfile }}
     - user: {{ phpstorm.prefs.user }}
     - makedirs: True
-        {% if salt['grains.get']('os_family') in ('Suse') %}
+        {% if grains.os_family in ('Suse') %}
     - group: users
         {% elif grains.os not in ('MacOS') %}
         #inherit Darwin ownership
     - group: {{ phpstorm.prefs.user }}
         {% endif %}
-    - if_missing: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.myfile }}
+    - if_missing: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.jarfile }}
    {% else %}
   cmd.run:
-    - name: curl -o {{phpstorm.homes}}/{{phpstorm.prefs.user}}/{{phpstorm.prefs.myfile}} {{phpstorm.prefs.importurl}}
+    - name: curl -o {{phpstorm.homes}}/{{phpstorm.prefs.user}}/{{phpstorm.prefs.jarfile}} {{phpstorm.prefs.jarurl}}
     - runas: {{ phpstorm.prefs.user }}
-    - if_missing: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.myfile }}
+    - if_missing: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/{{ phpstorm.prefs.jarfile }}
    {% endif %}
 
   {% endif %}
