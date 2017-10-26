@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Jetbrains PhpStorm
+Comment=JetBrains PhpStorm (PHP IDE)
+Icon=/opt/phpstorm/bin/phpstorm.png
+Exec={{ home }}/{{ command }}
+Terminal=false
+Type=Application
