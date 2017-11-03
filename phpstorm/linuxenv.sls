@@ -1,6 +1,6 @@
 {% from "phpstorm/map.jinja" import phpstorm with context %}
 
-{% if grains.os not in ('MacOS', 'Windows') %}
+{% if grains.os not in ('MacOS', 'Windows',) %}
 
 phpstorm-home-symlink:
   file.symlink:
@@ -22,7 +22,8 @@ phpstorm-config:
       home: '{{ phpstorm.jetbrains.home }}/phpstorm'
 
   # Debian alternatives
-  {% if grains.os_family not in ('Arch') %}
+  {% if phpstorm.linux.altpriority > 0 %}
+     {% if grains.os_family not in ('Arch',) %}
 
 # Add phpstorm-home to alternatives system
 phpstorm-home-alt-install:
@@ -57,6 +58,7 @@ phpstorm-alt-set:
     - onchanges:
       - alternatives: phpstorm-alt-install
 
+      {% endif %}
   {% endif %}
 
 {% endif %}

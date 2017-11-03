@@ -11,7 +11,7 @@ phpstorm-extract-dirs:
   file.directory:
     - names:
       - '{{ phpstorm.tmpdir }}'
-{% if grains.os not in ('MacOS', 'Windows') %}
+{% if grains.os not in ('MacOS', 'Windows',) %}
       - '{{ phpstorm.jetbrains.realhome }}'
     - user: root
     - group: root
@@ -33,7 +33,7 @@ phpstorm-download-archive:
 {%- if phpstorm.dl.src_hashsum %}
    # Check local archive using hashstring for older Salt / MacOS.
    # (see https://github.com/saltstack/salt/pull/41914).
-  {%- if grains['saltversioninfo'] <= [2016, 11, 6] or grains.os in ('MacOS') %}
+  {%- if grains['saltversioninfo'] <= [2016, 11, 6] or grains.os in ('MacOS',) %}
 phpstorm-check-archive-hash:
    module.run:
      - name: file.check_hash
@@ -83,9 +83,9 @@ phpstorm-remove-archive:
   file.absent:
     - name: '{{ phpstorm.tmpdir }}'
     - onchanges:
-{%- if grains.os in ('Windows') %}
+{%- if grains.os in ('Windows',) %}
       - pkg: phpstorm-package-install
-{%- elif grains.os in ('MacOS') %}
+{%- elif grains.os in ('MacOS',) %}
       - macpackage: phpstorm-package-install
 {% else %}
       #Unix

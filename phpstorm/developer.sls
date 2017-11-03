@@ -1,6 +1,6 @@
 {% from "phpstorm/map.jinja" import phpstorm with context %}
 
-{% if phpstorm.prefs.user not in (None, 'undfined', 'undefined_user') %}
+{% if phpstorm.prefs.user not in (None, 'undefined_user', 'undefined', '',) %}
 
   {% if grains.os == 'MacOS' %}
 phpstorm-desktop-shortcut-clean:
@@ -33,7 +33,7 @@ phpstorm-desktop-shortcut-add:
     - name: {{ phpstorm.homes }}/{{ phpstorm.prefs.user }}/Desktop/phpstorm{{ phpstorm.jetbrains.edition }}.desktop
     - user: {{ phpstorm.prefs.user }}
     - makedirs: True
-      {% if salt['grains.get']('os_family') in ('Suse') %} 
+      {% if salt['grains.get']('os_family') in ('Suse',) %} 
     - group: users
       {% else %}
     - group: {{ phpstorm.prefs.user }}
@@ -58,9 +58,9 @@ phpstorm-prefs-importfile:
     - source: {{ phpstorm.prefs.jardir }}/{{ phpstorm.prefs.jarfile }}
     - user: {{ phpstorm.prefs.user }}
     - makedirs: True
-        {% if grains.os_family in ('Suse') %}
+        {% if grains.os_family in ('Suse',) %}
     - group: users
-        {% elif grains.os not in ('MacOS') %}
+        {% elif grains.os not in ('MacOS',) %}
         #inherit Darwin ownership
     - group: {{ phpstorm.prefs.user }}
         {% endif %}
