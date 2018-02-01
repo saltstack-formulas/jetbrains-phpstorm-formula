@@ -31,6 +31,7 @@ phpstorm:
 
   prefs:
     user:
+    group:
     jarurl:
     jardir:
     jarfile: phpstorm-settings.jar
