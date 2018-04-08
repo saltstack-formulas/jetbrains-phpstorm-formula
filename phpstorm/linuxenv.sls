@@ -21,9 +21,8 @@ phpstorm-config:
     - context:
       home: '{{ phpstorm.jetbrains.home }}/phpstorm'
 
-  # Debian alternatives
-  {% if phpstorm.linux.altpriority > 0 %}
-     {% if grains.os_family not in ('Arch',) %}
+  # Linux alternatives
+  {% if phpstorm.linux.altpriority > 0 and grains.os_family not in ('Arch',) %}
 
 # Add phpstorm-home to alternatives system
 phpstorm-home-alt-install:
@@ -35,12 +34,12 @@ phpstorm-home-alt-install:
 
 phpstorm-home-alt-set:
   alternatives.set:
-    - name: phpstormhome
+    - name: phpstorm-home
     - path: {{ phpstorm.jetbrains.realhome }}
     - onchanges:
       - alternatives: phpstorm-home-alt-install
 
-# Add intelli to alternatives system
+# Add to alternatives system
 phpstorm-alt-install:
   alternatives.install:
     - name: phpstorm
@@ -58,7 +57,6 @@ phpstorm-alt-set:
     - onchanges:
       - alternatives: phpstorm-alt-install
 
-      {% endif %}
   {% endif %}
 
 {% endif %}
