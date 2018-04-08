@@ -1,28 +1,19 @@
 # -*- coding: utf-8 -*-
 # vim: ft=jinja
 
-# Start with defaults, merge osmapping, then pillars
+{% import_yaml 'phpstorm/defaults.yaml' as defaults %}
+{% import_yaml "phpstorm/osmap.yaml" as osmap %}
 
-{% import_yaml 'phpstorm/defaults.yaml' as defs %}
-{% set osmap = salt['grains.filter_by']({
-        'default':{
-        },
-
-        'MacOS':  { 'prefix' : '/Applications/PhpStorm',
-                    'homes'  : '/Users',
-                    'command': '/phpstorm',
-                    'osflavour': 'mac',
-        },
-        'Windows':{ 'prefix' : 'C:\\Program files',
-                    'homes'  : 'C:\\Users',
-                    'tmpdir' : 'C:\\temp\\jetbrainstmp\\',
-                    'command': '\\phpstorm.exe',
-                    'osflavour': 'windows',
-        },
-  }, grain="os",
+# start with defaults, merge osmap, then pillar data
+{% set ide = salt['grains.filter_by'](
+    defaults,
+    merge=salt['grains.filter_by'](
+        osmap,
+        grain='os',
+        merge=salt['pillar.get']('phpstorm', {}),
+    ),
+    base='phpstorm',
 ) %}
-{% do defs.phpstorm.update(osmap) %}
-{% set ide = salt['pillar.get']( 'phpstorm', default=defs.phpstorm, merge=True) %}
 
 # Get user's group name from pillar or 'id' command
 {%- if not ide.prefs.group %}
