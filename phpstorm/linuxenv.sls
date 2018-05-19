@@ -59,4 +59,17 @@ phpstorm-alt-set:
 
   {% endif %}
 
+  {% if phpstorm.linux.install_desktop_file %}
+phpstorm-global-desktop-file:
+  file.managed:
+    - name: {{ phpstorm.linux.desktop_file }}
+    - source: salt://phpstorm/files/phpstorm.desktop
+    - template: jinja
+    - context:
+      home: {{ phpstorm.jetbrains.realhome }}
+      command: {{ phpstorm.command }}
+      edition: {{ phpstorm.jetbrains.edition }}
+    - onlyif: test -f {{ phpstorm.jetbrains.realhome }}/{{ phpstorm.command }}
+  {% endif %}
+
 {% endif %}
