@@ -31,6 +31,9 @@ phpstorm-home-alt-install:
     - link: '{{ phpstorm.jetbrains.home }}/phpstorm'
     - path: '{{ phpstorm.jetbrains.realhome }}'
     - priority: {{ phpstorm.linux.altpriority }}
+    - retry:
+        attempts: 2
+        until: True
 
 phpstorm-home-alt-set:
   alternatives.set:
@@ -38,6 +41,9 @@ phpstorm-home-alt-set:
     - path: {{ phpstorm.jetbrains.realhome }}
     - onchanges:
       - alternatives: phpstorm-home-alt-install
+    - retry:
+        attempts: 2
+        until: True
 
 # Add to alternatives system
 phpstorm-alt-install:
@@ -49,6 +55,9 @@ phpstorm-alt-install:
     - require:
       - alternatives: phpstorm-home-alt-install
       - alternatives: phpstorm-home-alt-set
+    - retry:
+        attempts: 2
+        until: True
 
 phpstorm-alt-set:
   alternatives.set:
@@ -56,6 +65,9 @@ phpstorm-alt-set:
     - path: {{ phpstorm.jetbrains.realcmd }}
     - onchanges:
       - alternatives: phpstorm-alt-install
+    - retry:
+        attempts: 2
+        until: True
 
   {% endif %}
 
