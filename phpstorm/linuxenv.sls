@@ -19,7 +19,7 @@ phpstorm-config:
     - user: root
     - group: root
     - context:
-      home: '{{ phpstorm.jetbrains.home }}/phpstorm'
+      home: '{{ phpstorm.jetbrains.home|json }}/phpstorm'
 
   # Linux alternatives
   {% if phpstorm.linux.altpriority > 0 and grains.os_family not in ('Arch',) %}
@@ -78,9 +78,9 @@ phpstorm-global-desktop-file:
     - source: salt://phpstorm/files/phpstorm.desktop
     - template: jinja
     - context:
-      home: {{ phpstorm.jetbrains.realhome }}
-      command: {{ phpstorm.command }}
-      edition: {{ phpstorm.jetbrains.edition }}
+      home: {{ phpstorm.jetbrains.realhome|json }}
+      command: {{ phpstorm.command|json }}
+      edition: {{ phpstorm.jetbrains.edition|json }}
     - onlyif: test -f {{ phpstorm.jetbrains.realhome }}/{{ phpstorm.command }}
   {% endif %}
 

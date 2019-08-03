@@ -16,9 +16,9 @@ phpstorm-desktop-shortcut-add:
     - mode: 755
     - template: jinja
     - context:
-      user: {{ phpstorm.prefs.user }}
-      homes: {{ phpstorm.homes }}
-      edition: {{ phpstorm.jetbrains.edition }}
+      user: {{ phpstorm.prefs.user|json }}
+      homes: {{ phpstorm.homes|json }}
+      edition: {{ phpstorm.jetbrains.edition|json }}
     - onlyif: test "`uname`" = "Darwin"
   cmd.run:
     - name: /tmp/mac_shortcut.sh {{ phpstorm.jetbrains.edition }}
@@ -43,9 +43,8 @@ phpstorm-desktop-shortcut-install:
     - template: jinja
     - onlyif: test -f {{ phpstorm.jetbrains.realcmd }}
     - context:
-      home: {{ phpstorm.jetbrains.realhome }}
-      command: {{ phpstorm.command }}
-
+      home: {{ phpstorm.jetbrains.realhome|json }}
+      command: {{ phpstorm.command|json }}
 
   {% if phpstorm.prefs.jarurl or phpstorm.prefs.jardir %}
 
