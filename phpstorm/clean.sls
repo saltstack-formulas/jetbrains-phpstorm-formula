@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
+    {%- if grains.kernel|lower in ('linux', 'darwin',) %}
+
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import phpstorm with context %}
 
-    {%- if grains.kernel|lower in ('linux', 'darwin',) %}
-
 include:
-  - {{ '.macapp' if phpstorm.pkg.use_upstream_macapp else '.archive' }}
-  - .config
-  - .linuxenv
+  - {{ '.macapp' if phpstorm.pkg.use_upstream_macapp else '.archive' }}.clean
+  - .config.clean
+  - .linuxenv.clean
 
     {%- else %}
 
