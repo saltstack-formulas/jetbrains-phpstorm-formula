@@ -1,7 +1,7 @@
 .. _readme:
 
 phpstorm-formula
-============
+================
 
 |img_travis| |img_sr|
 
