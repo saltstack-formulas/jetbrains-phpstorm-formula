@@ -10,7 +10,7 @@ phpstorm-macos-app-clean-files:
   file.absent:
     - names:
       - {{ phpstorm.dir.tmp }}
-      - /Applications/{{ phpstorm.pkg.name }}{{ ' %sE'|format(phpstorm.edition) if phpstorm.edition else '' }}.app
+      - /Applications/{{ phpstorm.pkg.name }}{{ '' if 'edition' in phpstorm else '\ %sE'|format(phpstorm.edition) }}.app   # noqa 204
 
     {%- else %}
 

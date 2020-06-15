@@ -55,7 +55,7 @@ Available states
    :local:
 
 ``phpstorm``
-^^^^^^^^^^
+^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -64,28 +64,28 @@ manages Phpstorm configuration file and then
 configures the development environment.
 
 ``phpstorm.archive``
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 This state will install Phpstorm from archive only.
 
 ``phpstorm.macapp``
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 This state will install Phpstorm from source only.
 
 ``phpstorm.config``
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 This state will configure npmrc and/or environment and has a dependency on ``phpstorm.install``
 via include list.
 
 ``phpstorm.linuxenv``
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 
 This state will install some Phpstorm linux-alternatives on GNU/Linux.
 
 ``phpstorm.clean``
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 *Meta-state (This is a state that includes other states)*.
 
@@ -94,25 +94,25 @@ removes the configuration file and
 then uninstalls the package.
 
 ``phpstorm.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove the configuration of Phpstorm and has a
 dependency on ``phpstorm.package.clean`` via include list.
 
 ``phpstorm.archive.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Phpstorm package and has a dependency on
 ``phpstorm.config.clean`` via include list.
 
 ``phpstorm.macapp.clean``
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Phpstorm package and has a dependency on
 ``phpstorm.config.clean`` via include list.
 
 ``phpstorm.linuxenv.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This state will remove Phpstorm linux-alternatives on GNU/Linux.
 
