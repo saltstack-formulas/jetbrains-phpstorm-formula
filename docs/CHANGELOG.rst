@@ -2,6 +2,28 @@
 Changelog
 =========
 
+`1.0.1 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.0.0...v1.0.1>`_ (2020-06-15)
+--------------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **edition:** better edition jinja code (\ `32835de <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/32835de6caa5fd03cdc1aba36fe8acb0d94a4b61>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **kitchen+travis:** add new platforms [skip ci] (\ `43746a0 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/43746a0ed4a1f4f3005946c3f8955fbd290254a9>`_\ )
+* **travis:** add notifications => zulip [skip ci] (\ `7bd839b <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/7bd839b268399bf530547ef2da289f6204c9a2cc>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **reamde:** updated formatting (\ `f7821d3 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/f7821d37c2cbc1dee49ab3708545fad2e02b468a>`_\ )
+
 1.0.0 (2020-05-18)
 ------------------
 
