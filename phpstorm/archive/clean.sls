@@ -9,4 +9,4 @@ phpstorm-package-archive-clean-file-absent:
   file.absent:
     - names:
       - {{ phpstorm.pkg.archive.path }}
-      - /usr/local/jetbrains/phpstorm-{{ phpstorm.edition }}-*
+      - /usr/local/jetbrains/phpstorm-*

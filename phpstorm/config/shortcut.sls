@@ -28,7 +28,7 @@ phpstorm-config-file-file-managed-desktop-shortcut_file:
     - template: jinja
     - context:
         appname: {{ phpstorm.pkg.name }}
-        edition: {{ phpstorm.edition|json }}
+        edition: {{ '' if 'edition' not in phpstorm else phpstorm.edition|json }}
         command: {{ phpstorm.command|json }}
               {%- if phpstorm.pkg.use_upstream_macapp %}
         path: {{ phpstorm.pkg.macapp.path }}

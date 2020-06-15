@@ -28,7 +28,7 @@ phpstorm-config-file-file-managed-environ_file:
     - template: jinja
     - context:
               {%- if phpstorm.pkg.use_upstream_macapp %}
-        path: '/Applications/{{ phpstorm.pkg.name }}{{ '\ %sE'|format(phpstorm.edition) }}.app/Contents/MacOS'
+        path: '/Applications/{{ phpstorm.pkg.name }}{{ '' if 'edition' not in phpstorm else '\ %sE'|format(phpstorm.edition) }}.app/Contents/MacOS'    # noqa 204
               {%- else %}
         path: {{ phpstorm.pkg.archive.path }}/bin
               {%- endif %}

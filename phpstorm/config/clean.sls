@@ -26,7 +26,7 @@ phpstorm-config-clean-file-absent:
                {%- if grains.kernel|lower == 'linux' %}
       - {{ phpstorm.linux.desktop_file }}
                {%- elif grains.os == 'MacOS' %}
-      - {{ phpstorm.dir.homes }}/{{ phpstorm.identity.user }}/Desktop/{{ phpstorm.pkg.name }}{{ ' %sE'|format(phpstorm.edition) if phpstorm.edition else '' }}  # noqa 204
+      - {{ phpstorm.dir.homes }}/{{ phpstorm.identity.user }}/Desktop/{{ phpstorm.pkg.name }}{{ '' if 'edition' not in phpstorm else '\ %sE'|format(phpstorm.edition) }}  # noqa 204
                {%- endif %}
     - require:
       - sls: {{ sls_package_clean }}

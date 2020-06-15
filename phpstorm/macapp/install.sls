@@ -55,7 +55,7 @@ phpstorm-macos-app-install-macpackage:
     - template: jinja
     - context:
       appname: {{ phpstorm.pkg.name }}
-      edition: {{ phpstorm.edition }}
+      edition: {{ '' if 'edition' not in phpstorm else phpstorm.edition }}
       user: {{ phpstorm.identity.user }}
       homes: {{ phpstorm.dir.homes }}
   cmd.run:
