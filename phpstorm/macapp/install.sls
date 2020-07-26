@@ -14,7 +14,7 @@ phpstorm-macos-app-install-curl:
   pkg.installed:
     - name: curl
   cmd.run:
-    - name: curl -Lo {{ phpstorm.dir.tmp }}/phpstorm-{{ phpstorm.version }} {{ phpstorm.pkg.macapp.source }}
+    - name: curl -Lo {{ phpstorm.dir.tmp }}/phpstorm-{{ phpstorm.version }} "{{ phpstorm.pkg.macapp.source }}"
     - unless: test -f {{ phpstorm.dir.tmp }}/phpstorm-{{ phpstorm.version }}
     - require:
       - file: phpstorm-macos-app-install-curl
