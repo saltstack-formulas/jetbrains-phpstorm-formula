@@ -49,17 +49,21 @@ phpstorm-macos-app-install-macpackage:
     - onchanges:
       - cmd: phpstorm-macos-app-install-curl
   file.managed:
-    - name: /tmp/mac_shortcut.sh
-    - source: salt://phpstorm/files/mac_shortcut.sh
+    - name: /tmp/mac_shortcut.sh.jinja
+    - source: salt://phpstorm/files/mac_shortcut.sh.jinja
     - mode: 755
     - template: jinja
     - context:
-      appname: {{ phpstorm.pkg.name }}
-      edition: {{ '' if 'edition' not in phpstorm else phpstorm.edition }}
+      appname: {{ phpstorm.dir.path }}/{{ phpstorm.pkg.name }}
+      edition: {{ '' if not phpstorm.edition else ' %sE'|format(phpstorm.edition) }}
       user: {{ phpstorm.identity.user }}
       homes: {{ phpstorm.dir.homes }}
+    - require:
+      - macpackage: phpstorm-macos-app-install-macpackage
+    - onchanges:
+      - macpackage: phpstorm-macos-app-install-macpackage
   cmd.run:
-    - name: /tmp/mac_shortcut.sh
+    - name: /tmp/mac_shortcut.sh.jinja
     - runas: {{ phpstorm.identity.user }}
     - require:
       - file: phpstorm-macos-app-install-macpackage

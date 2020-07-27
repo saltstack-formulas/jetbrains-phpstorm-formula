@@ -11,21 +11,21 @@ phpstorm-linuxenv-home-file-absent:
   file.absent:
     - names:
       - /opt/phpstorm
-      - {{ phpstorm.pkg.archive.path }}
+      - {{ phpstorm.dir.path }}
 
         {% if phpstorm.linux.altpriority|int > 0 and grains.os_family not in ('Arch',) %}
 
 phpstorm-linuxenv-home-alternatives-clean:
   alternatives.remove:
     - name: phpstormhome
-    - path: {{ phpstorm.pkg.archive.path }}
+    - path: {{ phpstorm.dir.path }}
     - onlyif: update-alternatives --get-selections |grep ^phpstormhome
 
 
 phpstorm-linuxenv-executable-alternatives-clean:
   alternatives.remove:
     - name: phpstorm
-    - path: {{ phpstorm.pkg.archive.path }}/phpstorm
+    - path: {{ phpstorm.dir.path }}/{{ phpstorm.command }}
     - onlyif: update-alternatives --get-selections |grep ^phpstorm
 
         {%- else %}
