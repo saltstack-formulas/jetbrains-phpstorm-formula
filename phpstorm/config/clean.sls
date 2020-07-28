@@ -24,7 +24,7 @@ phpstorm-config-clean-file-absent:
       - {{ phpstorm.environ_file }}
                {%- endif %}
                {%- if grains.kernel|lower == 'linux' %}
-      - {{ phpstorm.linux.desktop_file }}
+      - {{ phpstorm.shortcut.file }}
                {%- elif grains.os == 'MacOS' %}
       - {{ phpstorm.dir.homes }}/{{ phpstorm.identity.user }}/Desktop/{{ phpstorm.pkg.name }}*{{ phpstorm.edition }}*
                {%- endif %}

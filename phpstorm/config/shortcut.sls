@@ -5,19 +5,15 @@
 {%- from tplroot ~ "/map.jinja" import phpstorm with context %}
 {%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
-{%- if phpstorm.linux.install_desktop_file and grains.os not in ('MacOS',) %}
-    {%- if phpstorm.pkg.use_upstream_macapp %}
-        {%- set sls_package_install = tplroot ~ '.macapp.install' %}
-    {%- else %}
-        {%- set sls_package_install = tplroot ~ '.archive.install' %}
-    {%- endif %}
+{%- if phpstorm.shortcut.install and grains.kernel|lower == 'linux' %}
+    {%- set sls_package_install = tplroot ~ '.archive.install' %}
 
 include:
   - {{ sls_package_install }}
 
 phpstorm-config-file-file-managed-desktop-shortcut_file:
   file.managed:
-    - name: {{ phpstorm.linux.desktop_file }}
+    - name: {{ phpstorm.shortcut.file }}
     - source: {{ files_switch(['shortcut.desktop.jinja'],
                               lookup='phpstorm-config-file-file-managed-desktop-shortcut_file'
                  )
