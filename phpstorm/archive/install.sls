@@ -11,7 +11,8 @@ phpstorm-package-archive-install:
     - require_in:
       - file: phpstorm-package-archive-install
   file.directory:
-    - name: {{ phpstorm.pkg.archive.path }}
+    - unless: {{ grains.os == 'MacOS' }}
+    - name: {{ phpstorm.dir.path }}
     - user: {{ phpstorm.identity.rootuser }}
     - group: {{ phpstorm.identity.rootgroup }}
     - mode: 755
@@ -39,7 +40,7 @@ phpstorm-package-archive-install:
 phpstorm-archive-install-file-symlink-phpstorm:
   file.symlink:
     - name: /usr/local/bin/phpstorm
-    - target: {{ phpstorm.pkg.archive.path }}/{{ phpstorm.command }}
+    - target: {{ phpstorm.dir.path }}/{{ phpstorm.command }}
     - force: True
     - onlyif: {{ grains.kernel|lower != 'windows' }}
     - require:

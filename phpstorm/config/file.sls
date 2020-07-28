@@ -28,12 +28,7 @@ phpstorm-config-file-managed-config_file:
     - makedirs: True
     - template: jinja
     - context:
-              {%- if phpstorm.pkg.use_upstream_macapp %}
-        path: {{ phpstorm.pkg.macapp.path }}
-              {%- else %}
-        path: {{ phpstorm.pkg.archive.path }}
-              {%- endif %}
-        config: {{ phpstorm.config|json }}
+      config: {{ phpstorm.config|json }}
     - require:
       - sls: {{ sls_package_install }}
 
