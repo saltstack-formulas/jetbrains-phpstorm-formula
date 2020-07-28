@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.0.2](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.0.1...v1.0.2) (2020-07-28)
+
+
+### Bug Fixes
+
+* **cmd.run:** wrap url in quotes (zsh) ([26c8676](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/26c8676467bebaed2bccecf732c39ae5b2288591))
+* **macos:** correct syntax ([433e071](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/433e0710a43cfb9a20e8bcbb2ecb41e297fb002d))
+* **macos:** do not create shortcut file ([88d78cc](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/88d78ccb46102b66567a32230f6842a215c096f9))
+
+
+### Code Refactoring
+
+* **jetbrains:** align all jetbrains formulas ([0f19ddd](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/0f19ddd554f730edbe64490a7380a65ea84344e7))
+
+
+### Continuous Integration
+
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([2e94039](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/2e94039eb9005358c00600fde31d3658a11a68c8))
+
+
+### Documentation
+
+* **readme:** minor update ([72bcac5](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/72bcac58b914f84a2db47e8fb66bca3ae8f14988))
+
+
+### Styles
+
+* **libtofs.jinja:** use Black-inspired Jinja formatting [skip ci] ([74cace2](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/74cace286339538c75c5af1016fbe6823e30c516))
+
 ## [1.0.1](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.0.0...v1.0.1) (2020-06-15)
 
 
