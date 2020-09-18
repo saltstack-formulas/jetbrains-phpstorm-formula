@@ -4,6 +4,7 @@
 phpstorm:
   product: PS
   edition: ''
+  # linux (default), mac (default), windowsZip (default), windows (setup.exe)
   flavour: linux
   release: latest
   version: latest
