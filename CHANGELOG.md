@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.2.0](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.1.0...v1.2.0) (2020-09-20)
+
+
+### Features
+
+* **clean:** add windows support ([4f72137](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/4f72137679074ab46b1c60415990d09b3841bccd))
+
 # [1.1.0](https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.0.2...v1.1.0) (2020-09-20)
 
 
