@@ -14,7 +14,7 @@ phpstorm-formula
    :scale: 100%
    :target: https://github.com/semantic-release/semantic-release
 
-Formula to install Phpstorm on GNU/Linux and MacOS.
+Formula to install Phpstorm on Windows, GNU/Linux and MacOS.
 
 .. contents:: **Table of Contents**
    :depth: 1

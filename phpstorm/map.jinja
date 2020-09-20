@@ -22,13 +22,15 @@
 {%- set jdata = salt['cmd.run']('curl -s -L "{0}{1}"'.format(p.pkg.uri, pcode))|load_yaml %}
 {%- do p.update({ 'version': jdata[ pcode ][0]['version'] }) %}
 
-{%- set dirname = 'phpstorm-%s-%s'|format( edition, p.version) %}
+{%- set dirname = 'Phpstorm-%s'|format( p.version) %}
 {%- set url = jdata[ pcode ][0]['downloads'][ p.flavour ]['link'] %}
-{%- set hash  = salt['cmd.run']('curl -L -s "{0}"'.format( jdata[ pcode ][0]['downloads'][ p.flavour ]['checksumLink'])).split(' ')[0] %}  # noqa 204
+{%- set hash = salt['cmd.run']('curl -Ls "{0}"'.format( jdata[ pcode ][0]['downloads'][ p.flavour ]['checksumLink'])).split(' ')[0] %}  # noqa 204
 
+{%- do p.update({'dirname': dirname}) %}
 {%- if p.pkg.use_upstream_archive %}
-    {%- do p.dir.update({'path': p.dir.archive ~ '/' ~ dirname}) %}
-    {%- do p.pkg.archive.update({'name': p.dir.archive ~ '/' ~ dirname, 'source': url, 'source_hash': hash }) %}
+    {%- set div = '\\' if grains.os == 'Windows' else '/' %}
+    {%- do p.dir.update({'path': p.dir.archive ~ div ~ dirname }) %}
+    {%- do p.pkg.archive.update({'name': p.dir.archive ~ div ~ dirname, 'source': url, 'source_hash': hash }) %}
 {%- endif %}
 {%- if p.pkg.use_upstream_macapp %}
     {%- do p.dir.update({'path': '/Applications'}) %}
