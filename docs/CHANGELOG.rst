@@ -2,6 +2,24 @@
 Changelog
 =========
 
+`1.2.1 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.2.0...v1.2.1>`_ (2020-12-16)
+--------------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gitlab-ci:** use GitLab CI as Travis CI replacement (\ `6029d65 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/6029d656e9759a1503cf2f67a36f8c8f86352fa3>`_\ )
+* **pre-commit:** add to formula [skip ci] (\ `3fad186 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/3fad186abc5d564ee34b0b8c240a273f2388c1ec>`_\ )
+* **pre-commit:** enable/disable ``rstcheck`` as relevant [skip ci] (\ `e09a3bf <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/e09a3bf62555501bf08203cc23d6bdaf666e79c5>`_\ )
+* **pre-commit:** finalise ``rstcheck`` configuration [skip ci] (\ `c0b0723 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/c0b0723c168558620ecb7f70934b4b2d00fd758e>`_\ )
+
+Documentation
+^^^^^^^^^^^^^
+
+
+* **readme:** fix ``rstcheck`` violation [skip ci] (\ `1b421b0 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/commit/1b421b01993167eeb3710ef6dbf2a9e53f96cf8b>`_\ ), closes `/travis-ci.org/github/myii/jetbrains-phpstorm-formula/builds/731607068#L259 <https://github.com//travis-ci.org/github/myii/jetbrains-phpstorm-formula/builds/731607068/issues/L259>`_
+
 `1.2.0 <https://github.com/saltstack-formulas/jetbrains-phpstorm-formula/compare/v1.1.0...v1.2.0>`_ (2020-09-20)
 --------------------------------------------------------------------------------------------------------------------
 
