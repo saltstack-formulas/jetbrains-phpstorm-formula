@@ -316,6 +316,7 @@ suites:
       state_top:
         base:
           '*':
+            - phpstorm._mapdata
             - phpstorm.clean
             - phpstorm
       pillars:
@@ -337,6 +338,7 @@ suites:
       state_top:
         base:
           '*':
+            - phpstorm._mapdata
             - phpstorm.clean
             - phpstorm
       pillars:
